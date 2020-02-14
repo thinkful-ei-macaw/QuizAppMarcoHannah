@@ -89,29 +89,34 @@ function generateStartButton(){
   return `<button>Start Quiz!</button>`;
 }
 
+function generateQuestion(){
+  return `<ul class="question">
+  <li class="current-question">
+    Question Number: ${STORE.currentQuestion + 1}
+  </li>
+</ul>`
+}
+
 function generateQuizForm(){
-  return `<form>
-<input id="1" type="radio" name="choice" value="${item.answers[0]}" /> ${item.answers[0]}
-<input id="2" type="radio" name="choice" value="${item.answers[1]}" /> ${item.answers[1]}
-<input id="3" type="radio" name="choice" value="${item.answers[2]}" /> ${item.answers[2]}
-<input id="4" type="radio" name="choice" value="${item.answers[3]}" /> ${item.answers[3]}
-</form>`;
-}
-
-function generateCorrectResponse(){
-  return `Correct!`;
-}
-
-function generateFalseResponse(){
-  return `Incorrect.`;
-}
-
-function generateNextButton(){
-  return `<button>Start Quiz!</button>`;
+  return `<form class="question-form">
+    <div class="question">
+      <legend> ${currentQuestion.question}</legend>
+    </div>
+    <div class="options">
+      <div class="answers">
+        ${generateQuestion()}
+      </div>
+      <div class="next-button">
+      <button type="button">Next</button>
+      </div>
+    </div>
+</form >`
 }
 
 function generateHighScore(){
-  return `score`;
+  return `<div>
+    Total Score = score/STORE.length
+  </div>`;
 }
 
 function generateRestartButton(){
@@ -125,24 +130,23 @@ function generateRestartButton(){
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
-function renderStartButton(){
-  $('main').html(generateStartButton());
-}
-
-function renderCorrectResponse(){
-  $('main').html(generateCorrectResponse());
-}
-function renderFalseResponse(){
-  $('main').html(generateFalseResponse());
-}
-
 function render(){
-  renderStartButton();
-  renderCorrectResponse();
-  renderFalseResponse();
-
+  let html = '';
+  if (quizStarted === false){
+    $('main').html(generateStartButton());
+  }
+  else if (STORE.currentQuestion >= 0 && STORE.currentQuestion < STORE.questions.length){
+    html = generateQuestion();
+    html += generateQuizForm();
+    $('main').html(html);
+  }
+  else{
+    $('main').html(generateHighScore());
+  }
 }
+
 $(render());
+
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
