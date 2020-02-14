@@ -125,6 +125,24 @@ function generateRestartButton(){
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
+function renderStartButton(){
+  $('main').html('generateStartButton()');
+}
+
+function renderCorrectResponse(){
+  $('main').html('generateCorrectResponse()');
+}
+function renderFalseResponse(){
+  $('main').html('generateFalseResponse()');
+}
+
+function render(){
+  renderStartButton();
+  renderCorrectResponse();
+  renderFalseResponse();
+
+}
+
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
