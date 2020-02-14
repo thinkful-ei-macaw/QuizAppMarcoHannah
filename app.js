@@ -86,18 +86,15 @@ const store = {
 //Get score button after fifth question
 //Score revealed and play again button
 
-function createQuizForm(item){
-  return `<form>
-  <input type="radio" name="choice" value="${item.answers[0]}" /> ${item.answers[0]}
-  <input type="radio" name="choice" value="${item.answers[1]}" /> ${item.answers[1]}
-  <input type="radio" name="choice" value="${item.answers[2]}" /> ${item.answers[2]}
-  <input type="radio" name="choice" value="${item.answers[3]}" /> ${item.answers[3]}
+function createHTMLelements(){$('main').html('<form>
+<input type="radio" name="choice" value="${item.answers[0]}" /> ${item.answers[0]}
+<input type="radio" name="choice" value="${item.answers[1]}" /> ${item.answers[1]}
+<input type="radio" name="choice" value="${item.answers[2]}" /> ${item.answers[2]}
+<input type="radio" name="choice" value="${item.answers[3]}" /> ${item.answers[3]}
 </form>
-  startButton = <button type="button">Start Quiz!</button>`;
-
-  
-
+startButton = <button type="button">Start Quiz!</button>');
 }
+
 
 //function createHTMLelements();
 
