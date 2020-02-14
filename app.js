@@ -13,7 +13,7 @@ const store = {
         'pink',
         'green'
       ],
-      correctAnswer: 'red'
+      correctAnswer: 0
     },
     {
       question: 'What color is the sky?',
@@ -23,7 +23,7 @@ const store = {
         'blue',
         'pink'
       ],
-      correctAnswer: 'blue'
+      correctAnswer: 2
     },
     {
       question: 'What is the best thing in the world?',
@@ -33,7 +33,7 @@ const store = {
         'coding!',
         'someone eating your leftovers'
       ],
-      correctAnswer: 'coding!'
+      correctAnswer: 2
     },
     {
       question: 'What number comes after 9?',
@@ -43,7 +43,7 @@ const store = {
         '8',
         '11'
       ],
-      correctAnswer: '10'
+      correctAnswer: 1
     },
     {
       question: 'What desert is standard at birthday parties?',
@@ -53,7 +53,7 @@ const store = {
         'pizza',
         'lollipops'
       ],
-      correctAnswer: 'cake'
+      correctAnswer: 0
     },
   ],
   quizStarted: false,
@@ -142,7 +142,7 @@ function render(){
   renderFalseResponse();
 
 }
-$(render);
+$(render());
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
