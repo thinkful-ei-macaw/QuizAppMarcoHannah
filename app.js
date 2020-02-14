@@ -99,11 +99,11 @@ function generateQuizForm(){
 }
 
 function generateCorrectResponse(){
-  return `'Correct!`;
+  return `Correct!`;
 }
 
 function generateFalseResponse(){
-  return `'Incorrect.'`;
+  return `Incorrect.`;
 }
 
 function generateNextButton(){
@@ -126,14 +126,14 @@ function generateRestartButton(){
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 function renderStartButton(){
-  $('main').html('generateStartButton()');
+  $('main').html(generateStartButton());
 }
 
 function renderCorrectResponse(){
-  $('main').html('generateCorrectResponse()');
+  $('main').html(generateCorrectResponse());
 }
 function renderFalseResponse(){
-  $('main').html('generateFalseResponse()');
+  $('main').html(generateFalseResponse());
 }
 
 function render(){
@@ -142,6 +142,7 @@ function render(){
   renderFalseResponse();
 
 }
+$(render);
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
