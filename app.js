@@ -80,23 +80,44 @@ const store = {
 //**THINGS I NEED */
 //Start button
 //Form with multiple choice (one at a time)
-//Submit button
 //Response with correct/false
 //Next button
 //Get score button after fifth question
 //Score revealed and play again button
 
-function createHTMLelements(){$('main').html('<form>
-<input type="radio" name="choice" value="${item.answers[0]}" /> ${item.answers[0]}
-<input type="radio" name="choice" value="${item.answers[1]}" /> ${item.answers[1]}
-<input type="radio" name="choice" value="${item.answers[2]}" /> ${item.answers[2]}
-<input type="radio" name="choice" value="${item.answers[3]}" /> ${item.answers[3]}
-</form>
-startButton = <button type="button">Start Quiz!</button>');
+function generateStartButton(){
+  return `<button>Start Quiz!</button>`;
 }
 
+function generateQuizForm(){
+  return `<form>
+<input id="1" type="radio" name="choice" value="${item.answers[0]}" /> ${item.answers[0]}
+<input id="2" type="radio" name="choice" value="${item.answers[1]}" /> ${item.answers[1]}
+<input id="3" type="radio" name="choice" value="${item.answers[2]}" /> ${item.answers[2]}
+<input id="4" type="radio" name="choice" value="${item.answers[3]}" /> ${item.answers[3]}
+</form>`;
+}
 
-//function createHTMLelements();
+function generateCorrectResponse(){
+  return `'Correct!`;
+}
+
+function generateFalseResponse(){
+  return `'Incorrect.'`;
+}
+
+function generateNextButton(){
+  return `<button>Start Quiz!</button>`;
+}
+
+function generateHighScore(){
+  return `score`;
+}
+
+function generateRestartButton(){
+  `<button>Restart Quiz</button>`;
+}
+
 
 // These functions return HTML templates 
 
