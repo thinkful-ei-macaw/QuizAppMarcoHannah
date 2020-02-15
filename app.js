@@ -1,4 +1,7 @@
 'use strict';
+
+// import { start } from "repl";
+
 /**
  * Example store structure
  */
@@ -86,13 +89,13 @@ const store = {
 //Score revealed and play again button
 
 function generateStartButton(){
-  return `<button>Start Quiz!</button>`;
+  return `<button type="button" class="start">Start Quiz!</button>`;
 }
 
 function generateQuestion(){
   return `<ul class="question">
   <li class="current-question">
-    Question Number: ${STORE.currentQuestion + 1}
+    Question Number: ${store.currentQuestion + 1}
   </li>
 </ul>`
 }
@@ -115,12 +118,12 @@ function generateQuizForm(){
 
 function generateHighScore(){
   return `<div>
-    Total Score = score/STORE.length
+    Total Score = score/store.length
   </div>`;
 }
 
 function generateRestartButton(){
-  `<button>Restart Quiz</button>`;
+  `<button type="button">Restart Quiz</button>`;
 }
 
 
@@ -132,17 +135,20 @@ function generateRestartButton(){
 
 function render(){
   let html = '';
-  if (quizStarted === false){
+  if (store.quizStarted === false){
     $('main').html(generateStartButton());
   }
-  else if (STORE.currentQuestion >= 0 && STORE.currentQuestion < STORE.questions.length){
+  else if (store.currentQuestion >= 0 && store.currentQuestion < store.questions.length){
     html = generateQuestion();
     html += generateQuizForm();
     $('main').html(html);
   }
-  else{
-    $('main').html(generateHighScore());
-  }
+  // else{
+  //   let code;
+  //   code={generateHighScore(); generateRestartButton()};
+  //   $('main').html(code);
+  // }
+  
 }
 
 $(render());
@@ -151,3 +157,11 @@ $(render());
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+function startQuiz(){
+  $('.start').on('click', function(event){
+    store.quizStarted=true;
+    generateQuestion();    
+  });
+}
+
