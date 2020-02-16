@@ -3,9 +3,9 @@
 // import { start } from "repl";
 
 /**
- * Example store structure
+ * Example questionnaire structure
  */
-const store = {
+const questionnaire = {
   // 5 or more questions are required
   questions: [
     {
@@ -16,7 +16,7 @@ const store = {
         'pink',
         'green'
       ],
-      correctAnswer: 0
+      correctAnswer: 'red'
     },
     {
       question: 'What color is the sky?',
@@ -26,7 +26,7 @@ const store = {
         'blue',
         'pink'
       ],
-      correctAnswer: 2
+      correctAnswer: 'blue'
     },
     {
       question: 'What is the best thing in the world?',
@@ -36,7 +36,7 @@ const store = {
         'coding!',
         'someone eating your leftovers'
       ],
-      correctAnswer: 2
+      correctAnswer: 'coding!'
     },
     {
       question: 'What number comes after 9?',
@@ -46,7 +46,7 @@ const store = {
         '8',
         '11'
       ],
-      correctAnswer: 1
+      correctAnswer: '10'
     },
     {
       question: 'What desert is standard at birthday parties?',
@@ -56,11 +56,11 @@ const store = {
         'pizza',
         'lollipops'
       ],
-      correctAnswer: 0
+      correctAnswer: 'cake'
     },
   ],
   quizStarted: false,
-  questionNumber: 0,
+  currentQuestion: 0,
   score: 0
 };
 
@@ -68,7 +68,7 @@ const store = {
  * 
  * Technical requirements:
  * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
+ * Your app should include a render() function, that regenerates the view each time the questionnaire is updated. 
  * See your course material, consult your instructor, and reference the slides for more details.
  *
  * NO additional HTML elements should be added to the index.html file.
@@ -89,36 +89,68 @@ const store = {
 //Score revealed and play again button
 
 function generateStartButton(){
-  return `<button type="button" class="start">Start Quiz!</button>`;
+  return `
+  <div class="start-screen">
+  <button type="button" id="start">Start Quiz!</button>
+  </div>`;
 }
 
-function generateQuestion(){
+function printQuestion(){
+  let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
   return `<ul class="question">
   <li class="current-question">
-    Question Number: ${store.currentQuestion + 1}
+    Question Number: ${questionnaire.currentQuestion + 1}/${questionnaire.questions.length}
+  </li>
+  <li id='score'>
+  Score; ${questionnaire.score}/${questionnaire.questions.length}
   </li>
 </ul>`
 }
 
-function generateQuizForm(){
-  return `<form class="question-form">
+function printAnswers(){
+  const answersArray = questionnaire.questions[questionnaire.currentQuestion].answers
+  let answersHtml = '';
+  let i = 0;
+
+  answersArray.forEach(answer => {
+    answersHtml += `
+      <div class= "multipleChoice' id="option-container-${i}">
+        <input type="radio" name="options" id="option${i + 1}" value= "${answer}" tabindex ="${i + 1}" required> 
+        <label for="option${i + 1}"> ${answer}</label>
+      </div>
+    `;
+    i++;
+  });
+  return answersHtml;
+
+}
+
+
+
+function printQuiz(){
+  let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
+  return `
+  <form id = "multipleChoice" class="question-form">
     <div class="question">
-      <legend> ${currentQuestion.question}</legend>
+      //<legend> ${currentQuestion.question}</legend>
     </div>
     <div class="options">
       <div class="answers">
-        ${generateQuestion()}
+       ${printAnswers()}here
       </div>
       <div class="next-button">
-      <button type="button">Next</button>
+      <button type="button" id = "nextQ">Next</button>
       </div>
+      <div class="submit-button">
+      <button type="button" id = "submitB">Submit</div>
+      </div> 
     </div>
 </form >`
 }
 
 function generateHighScore(){
   return `<div>
-    Total Score = score/store.length
+    Total Score = score/questionnaire.length
   </div>`;
 }
 
@@ -131,23 +163,27 @@ function generateRestartButton(){
 
 /********** RENDER FUNCTION(S) **********/
 
-// This function conditionally replaces the contents of the <main> tag based on the state of the store
+// This function conditionally replaces the contents of the <main> tag based on the state of the questionnaire
 
 function render(){
   let html = '';
-  if (store.quizStarted === false){
-    $('main').html(generateStartButton());
-  }
-  else if (store.currentQuestion >= 0 && store.currentQuestion < store.questions.length){
-    html = generateQuestion();
-    html += generateQuizForm();
+
+          if (questionnaire.quizStarted === false){
+            $('main').html(generateStartButton());
+            return;
+          }
+
+
+  else if (questionnaire.currentQuestion >= 0 && questionnaire.currentQuestion < questionnaire.questions.length){
+    html = printQuestion();
+    html += printQuiz();
     $('main').html(html);
   }
-  // else{
+   else{
   //   let code;
   //   code={generateHighScore(); generateRestartButton()};
-  //   $('main').html(code);
-  // }
+    $('main').html(code);
+ }
   
 }
 
@@ -158,10 +194,52 @@ $(render());
 
 // These functions handle events (submit, click, etc)
 
-function startQuiz(){
-  $('.start').on('click', function(event){
-    store.quizStarted=true;
-    generateQuestion();    
-  });
+function clickonStartManager(){
+$('main').on('click', '#start', function(event){
+console.log('i hear you');
+questionnaire.quizStarted = true;
+    render();
+
+})
+};
+
+function multipleChoiceManager(){
+  $('main').on('click', '#multipleChoice', function(event){
+    
+    console.log('i heard the click on multiple choice');
+
+
+
+  })
+};
+
+
+function nextQManager(){
+$('main').on('click', '#nextQ', function(event){
+  console.log('i heard the click on next');
+  render();
+
+
+})
+
+
+
 }
 
+
+
+
+
+
+
+
+function handleQuiz(){
+  render();
+  clickonStartManager();
+  nextQManager()
+  multipleChoiceManager();
+  
+
+}
+
+$(handleQuiz);
