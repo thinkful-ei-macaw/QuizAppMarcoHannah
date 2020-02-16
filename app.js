@@ -158,3 +158,5 @@ $(render);
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+generateStartButton();
