@@ -200,9 +200,8 @@ function submitManager() {
       questionnaire.score++;
       render();
       clickonStartManager();
-      return `<p class="colormegreen"> You're correct</p>`;
-
-
+      return 
+      $('<p>got right answer</p>')
     } else {
       return `<p class="colormered" You're wrong</p>`;
 
