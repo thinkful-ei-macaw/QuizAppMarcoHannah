@@ -112,6 +112,8 @@ function printAnswers(){
   let answersHtml = '';
   let i = 0;
 
+//---------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------
   answersArray.forEach(answer => {
     answersHtml += `
       <div class= "multipleChoice' id="option-container-${i}">
@@ -124,8 +126,8 @@ function printAnswers(){
   return answersHtml;
 
 }
-
-
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
 
 function printQuiz(){
   let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
@@ -138,11 +140,15 @@ function printQuiz(){
       <div class="answers">
        ${printAnswers()}here
       </div>
-      <div class="next-button">
-      <button type="button" id = "nextQ">Next</button>
+      <div class="submit-answer" >
+          <button type="button" id = "submitAtoQ">Submit Your Answer</button>
       </div>
+      <div class="next-button">
+          <button type="button" id = "nextQ">Next Question</button>
+      </div> 
+      
       <div class="submit-button">
-      <button type="submit" id = "submitB">Restart</div>
+          <button type="submit" id = "submitB">Restart</div>
       </div> 
     </div>
 </form >`
@@ -204,22 +210,26 @@ questionnaire.quizStarted = true;
 }
 
 function multipleChoiceManager(){
-  $('main').on('click', '#nextQ', function(event){
+  $("main").on("click", "asubmitAtoQ", function(event){
     event.preventDefault();
-    let currentQ= questionnaire.questions[questionnaire.currentQuestion];
+    const currentQ = questionnaire.questions[questionnaire.currentQuestion];
     let choice= $('input[type="radio"]:checked').val();
-    for (let i=0;i<4;i++){
-      if(choice === currentQ.correctAnswer){
-        questionnaire.score++;
-      }
+    
+                    if (choice === currentQ.correctAnswer){
+
+                      questionnaire.score++;
+
+                    }
+                    
+    
+    
+      
       render();
     }
-    console.log('i heard the click on multiple choice');
-
-
-
-  });
+    
+)
 }
+
 
 
 function nextQManager(){
@@ -229,6 +239,8 @@ questionnaire.currentQuestion++;
   console.log('i heard the click on next');
   render();
 });
+
+
 
 
 
@@ -244,7 +256,7 @@ questionnaire.currentQuestion++;
 function handleQuiz(){
   render();
   clickonStartManager();
-  nextQManager()
+  nextQManager();
   multipleChoiceManager();
   determineScore();
   
