@@ -197,13 +197,14 @@ function submitManager() {
     console.log(choice);
     console.log(currentQ.correctAnswer);
     if (choice === currentQ.correctAnswer) {
+      alert('You are correct!')
       questionnaire.score++;
       render();
       clickonStartManager();
-      return 
-      $('<p>got right answer</p>')
-    } else {
-      return `<p class="colormered" You're wrong</p>`;
+      
+    } 
+    else {
+     alert('Sorry... That was incorrect.');
 
     }      
                      
