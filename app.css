@@ -18,19 +18,24 @@ body {
   display: inline-flexbox;
   margin: 0 auto;
   background-color: #3F7779;
-  padding: 10px 50px 50px 50px;
+  
   border: 2px solid #284B4C;
   list-style-type: none;
   
 }
 
 header{
+  margin-top: 50px;
 font-size: x-large;
   text-align: center;
   color: #C1DDDE;
 }
 
+#message{
 
+  font-size: xx-large;
+  text-align: right;
+}
 .results{
   text-align: center;
   inset-block-start: right;
@@ -48,7 +53,11 @@ font-size: x-large;
    padding: 15px;
    border: none;
  }
+.multiple-choice{
+  padding-left: 100px;
 
+
+}
 
 legend{
   
@@ -57,9 +66,7 @@ legend{
 }
 
 
-  .options{
-  inline-block
-}
+
 
 
 
@@ -108,3 +115,4 @@ legend{
     clear: both;
   } */
 
+}

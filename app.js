@@ -181,11 +181,13 @@ function render() {
 
   if (questionnaire.quizStarted === false) {
     $('main').html(generateStartButton());
+   // $("header").css("margin-top": 50px;");
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
     questionnaire.currentQuestion < questionnaire.questions.length
   ) {
+    
     html = printQuestion();
     html += printQuiz();
     $('main').html(html);
@@ -227,25 +229,20 @@ function submitManager() {
     console.log(choice);
     console.log(currentQ.correctAnswer);
     if (choice === currentQ.correctAnswer) {
-      alert('You are correct!');
+      
       $("#message").text("That was right!");
       questionnaire.score++;
-      render();
-      clickonStartManager();
-      correctAnswer();
       
-      
-      
-
-      
+           
+         
     } 
     else {
-      alert('Sorry... That was incorrect. Try again!');
-
+      
+      $("#message").text("That was incorrect. Try again!!");
     }      
                      
 
-    render();
+  
   });
 }
 
