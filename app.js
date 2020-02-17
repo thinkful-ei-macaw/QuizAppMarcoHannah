@@ -147,6 +147,15 @@ function generateRestartButton() {
   `<button type="button">Restart Quiz</button>`;
 }
 
+function correctAnswer(){
+  return
+  `
+    </div>
+    <p class="colorgreen">You are CORRECT!!</p> 
+  </div>
+`;
+
+}
 
 function generateResultsScreen() {
   return `
@@ -157,6 +166,7 @@ function generateResultsScreen() {
             <div class="col-12">
               <legend>Your Score is: ${questionnaire.score}/${questionnaire.questions.length}</legend>
             </div>
+            <button type="submit" id = "submitB">Restart</div>
           </div>`
 }
 // These functions return HTML templates
@@ -179,11 +189,10 @@ function render() {
     html += printQuiz();
     $('main').html(html);
   } else {
-    //   let code;
-    //   code={generateHighScore(); generateRestartButton()};
+    
     
     $('main').html(generateResultsScreen());
-
+    
 
 
 
@@ -218,9 +227,15 @@ function submitManager() {
     console.log(currentQ.correctAnswer);
     if (choice === currentQ.correctAnswer) {
       alert('You are correct!');
+      
       questionnaire.score++;
       render();
       clickonStartManager();
+      correctAnswer();
+      
+      
+      
+
       
     } 
     else {
