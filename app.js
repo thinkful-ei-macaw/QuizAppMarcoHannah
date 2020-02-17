@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // import { start } from "repl";
 
@@ -9,34 +9,34 @@ const questionnaire = {
   // 5 or more questions are required
   questions: [
     {
-      question: "What color are roses?",
-      answers: ["red", "orange", "pink", "green"],
-      correctAnswer: "red"
+      question: 'What color are roses?',
+      answers: ['red', 'orange', 'pink', 'green'],
+      correctAnswer: 'red'
     },
     {
-      question: "What color is the sky?",
-      answers: ["green", "black", "blue", "pink"],
-      correctAnswer: "blue"
+      question: 'What color is the sky?',
+      answers: ['green', 'black', 'blue', 'pink'],
+      correctAnswer: 'blue'
     },
     {
-      question: "What is the best thing in the world?",
+      question: 'What is the best thing in the world?',
       answers: [
-        "puppies crying",
-        "dropping your ice cream",
-        "coding!",
-        "someone eating your leftovers"
+        'puppies crying',
+        'dropping your ice cream',
+        'coding!',
+        'someone eating your leftovers'
       ],
-      correctAnswer: "coding!"
+      correctAnswer: 'coding!'
     },
     {
-      question: "What number comes after 9?",
-      answers: ["3", "10", "8", "11"],
-      correctAnswer: "10"
+      question: 'What number comes after 9?',
+      answers: ['3', '10', '8', '11'],
+      correctAnswer: '10'
     },
     {
-      question: "What desert is standard at birthday parties?",
-      answers: ["cake", "hot dogs", "pizza", "lollipops"],
-      correctAnswer: "cake"
+      question: 'What desert is standard at birthday parties?',
+      answers: ['cake', 'hot dogs', 'pizza', 'lollipops'],
+      correctAnswer: 'cake'
     }
   ],
   quizStarted: false,
@@ -80,8 +80,8 @@ function printQuestion() {
   return `<ul class="question">
   <li class="current-question">
     Question Number: ${questionnaire.currentQuestion + 1}/${
-    questionnaire.questions.length
-  }
+  questionnaire.questions.length
+}
   </li>
   <li id='score'>
   Score: ${questionnaire.score}/${questionnaire.questions.length}
@@ -92,7 +92,7 @@ function printQuestion() {
 function printAnswers() {
   const answersArray =
     questionnaire.questions[questionnaire.currentQuestion].answers;
-  let answersHtml = "";
+  let answersHtml = '';
   let i = 0;
 
   //---------------------------------------------------------------------------------------------------------------
@@ -154,10 +154,10 @@ function generateRestartButton() {
 // This function conditionally replaces the contents of the <main> tag based on the state of the questionnaire
 
 function render() {
-  let html = "";
+  let html = '';
 
   if (questionnaire.quizStarted === false) {
-    $("main").html(generateStartButton());
+    $('main').html(generateStartButton());
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
@@ -165,11 +165,11 @@ function render() {
   ) {
     html = printQuestion();
     html += printQuiz();
-    $("main").html(html);
+    $('main').html(html);
   } else {
     //   let code;
     //   code={generateHighScore(); generateRestartButton()};
-    $("main").html(code);
+    $('main').html(code);
   }
 }
 
@@ -180,31 +180,31 @@ $(render());
 // These functions handle events (submit, click, etc)
 
 function clickonStartManager() {
-  $("main").on("click", "#start", function(event) {
-    console.log("i hear you");
+  $('main').on('click', '#start', function(event) {
+    console.log('i hear you');
     questionnaire.quizStarted = true;
     render();
   });
 }
 
 function submitManager() {
-  $("main").on("click", ".submit-answer", function(event) {
+  $('main').on('click', '.submit-answer', function(event) {
     event.preventDefault();
-    console.log("I dance when I submit");
+    console.log('I dance when I submit');
     const currentQ = questionnaire.questions[questionnaire.currentQuestion];
     console.log(currentQ);
     let choice = $('input[type="radio"]:checked').val();
     console.log(choice);
     console.log(currentQ.correctAnswer);
     if (choice === currentQ.correctAnswer) {
-      alert('You are correct!')
+      alert('You are correct!');
       questionnaire.score++;
       render();
       clickonStartManager();
       
     } 
     else {
-     alert('Sorry... That was incorrect.');
+      alert('Sorry... That was incorrect. Try again!');
 
     }      
                      
@@ -214,10 +214,10 @@ function submitManager() {
 }
 
 function nextQManager() {
-  $("main").on("click", "#nextQ", function(event) {
+  $('main').on('click', '#nextQ', function(event) {
     event.preventDefault();
     questionnaire.currentQuestion++;
-    console.log("i heard the click on next");
+    console.log('i heard the click on next');
     render();
   });
 }
