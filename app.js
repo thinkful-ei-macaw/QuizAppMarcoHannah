@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // import { start } from "repl";
 
@@ -9,55 +9,35 @@ const questionnaire = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color are roses?',
-      answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
-      ],
-      correctAnswer: 'red'
+      question: "What color are roses?",
+      answers: ["red", "orange", "pink", "green"],
+      correctAnswer: "red"
     },
     {
-      question: 'What color is the sky?',
-      answers: [
-        'green',
-        'black',
-        'blue',
-        'pink'
-      ],
-      correctAnswer: 'blue'
+      question: "What color is the sky?",
+      answers: ["green", "black", "blue", "pink"],
+      correctAnswer: "blue"
     },
     {
-      question: 'What is the best thing in the world?',
+      question: "What is the best thing in the world?",
       answers: [
-        'puppies crying',
-        'dropping your ice cream',
-        'coding!',
-        'someone eating your leftovers'
+        "puppies crying",
+        "dropping your ice cream",
+        "coding!",
+        "someone eating your leftovers"
       ],
-      correctAnswer: 'coding!'
+      correctAnswer: "coding!"
     },
     {
-      question: 'What number comes after 9?',
-      answers: [
-        '3',
-        '10',
-        '8',
-        '11'
-      ],
-      correctAnswer: '10'
+      question: "What number comes after 9?",
+      answers: ["3", "10", "8", "11"],
+      correctAnswer: "10"
     },
     {
-      question: 'What desert is standard at birthday parties?',
-      answers: [
-        'cake',
-        'hot dogs',
-        'pizza',
-        'lollipops'
-      ],
-      correctAnswer: 'cake'
-    },
+      question: "What desert is standard at birthday parties?",
+      answers: ["cake", "hot dogs", "pizza", "lollipops"],
+      correctAnswer: "cake"
+    }
   ],
   quizStarted: false,
   currentQuestion: 0,
@@ -65,10 +45,10 @@ const questionnaire = {
 };
 
 /**
- * 
+ *
  * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the questionnaire is updated. 
+ *
+ * Your app should include a render() function, that regenerates the view each time the questionnaire is updated.
  * See your course material, consult your instructor, and reference the slides for more details.
  *
  * NO additional HTML elements should be added to the index.html file.
@@ -76,7 +56,7 @@ const questionnaire = {
  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
  *
  * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
+ *
  */
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
@@ -88,48 +68,51 @@ const questionnaire = {
 //Get score button after fifth question
 //Score revealed and play again button
 
-function generateStartButton(){
+function generateStartButton() {
   return `
   <div class="start-screen">
   <button type="button" id="start">Start Quiz!</button>
   </div>`;
 }
 
-function printQuestion(){
+function printQuestion() {
   let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
   return `<ul class="question">
   <li class="current-question">
-    Question Number: ${questionnaire.currentQuestion + 1}/${questionnaire.questions.length}
+    Question Number: ${questionnaire.currentQuestion + 1}/${
+    questionnaire.questions.length
+  }
   </li>
   <li id='score'>
   Score: ${questionnaire.score}/${questionnaire.questions.length}
   </li>
-</ul>`
+</ul>`;
 }
 
-function printAnswers(){
-  const answersArray = questionnaire.questions[questionnaire.currentQuestion].answers
-  let answersHtml = '';
+function printAnswers() {
+  const answersArray =
+    questionnaire.questions[questionnaire.currentQuestion].answers;
+  let answersHtml = "";
   let i = 0;
 
-//---------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------------------------------------------
   answersArray.forEach(answer => {
     answersHtml += `
       <div class= "multipleChoice' id="option-container-${i}">
-        <input type="radio" name="options" id="option${i + 1}" value= "${answer}" tabindex ="${i + 1}" required> 
+        <input type="radio" name="options" id="option${i +
+          1}" value= "${answer}" tabindex ="${i + 1}" required> 
         <label for="option${i + 1}"> ${answer}</label>
       </div>
     `;
     i++;
   });
   return answersHtml;
-
 }
 //---------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------
 
-function printQuiz(){
+function printQuiz() {
   let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
   return `
   <form id = "multipleChoice" class="question-form">
@@ -151,125 +134,100 @@ function printQuiz(){
           <button type="submit" id = "submitB">Restart</div>
       </div> 
     </div>
-</form >`
+</form >`;
 }
 
-function generateHighScore(){
+function generateHighScore() {
   return `<div>
-    Total Score = ${score/questionnaire.length}
+    Total Score = ${score / questionnaire.length}
   </div>`;
 }
-  
-function generateRestartButton(){
+
+function generateRestartButton() {
   `<button type="button">Restart Quiz</button>`;
 }
 
-
-// These functions return HTML templates 
+// These functions return HTML templates
 
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the questionnaire
 
-function render(){
-  let html = '';
+function render() {
+  let html = "";
 
-          if (questionnaire.quizStarted === false){
-            $('main').html(generateStartButton());
-            return;
-          }
-
-
-  else if (questionnaire.currentQuestion >= 0 && questionnaire.currentQuestion < questionnaire.questions.length){
+  if (questionnaire.quizStarted === false) {
+    $("main").html(generateStartButton());
+    return;
+  } else if (
+    questionnaire.currentQuestion >= 0 &&
+    questionnaire.currentQuestion < questionnaire.questions.length
+  ) {
     html = printQuestion();
     html += printQuiz();
-    $('main').html(html);
+    $("main").html(html);
+  } else {
+    //   let code;
+    //   code={generateHighScore(); generateRestartButton()};
+    $("main").html(code);
   }
-   else{
-  //   let code;
-  //   code={generateHighScore(); generateRestartButton()};
-    $('main').html(code);
- }
-  
 }
 
 $(render());
-
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
 
-function clickonStartManager(){
-$('main').on('click', '#start', function(event){
-console.log('i hear you');
-questionnaire.quizStarted = true;
+function clickonStartManager() {
+  $("main").on("click", "#start", function(event) {
+    console.log("i hear you");
+    questionnaire.quizStarted = true;
     render();
-
-});
+  });
 }
 
-function submitManager(){
-  $("main").on("click", ".submit-answer", function(event){
+function submitManager() {
+  $("main").on("click", ".submit-answer", function(event) {
     event.preventDefault();
     console.log("I dance when I submit");
     const currentQ = questionnaire.questions[questionnaire.currentQuestion];
     console.log(currentQ);
-    let choice= $('input[type="radio"]:checked').val();
+    let choice = $('input[type="radio"]:checked').val();
     console.log(choice);
     console.log(currentQ.correctAnswer);
-                    if (choice === currentQ.correctAnswer){
-                   questionnaire.score++;
-                   render();
-  clickonStartManager();
-  return `  <p> You're</p>`
-
-                    }else {
-                      `
-                      <div class="right-answer">That is Wrong!</div>
-                      `;
-                    }
-                    
-    
-    
-        
+    if (choice === currentQ.correctAnswer) {
+      questionnaire.score++;
       render();
-    }
-    
-)
+      clickonStartManager();
+      return `<p class="colormegreen"> You're correct</p>`;
+
+
+    } else {
+      return `<p class="colormered" You're wrong</p>`;
+
+    }      
+                     
+
+    render();
+  });
 }
 
-
-
-function nextQManager(){
-$('main').on('click', '#nextQ', function(event){
-  event.preventDefault();
-questionnaire.currentQuestion++;
-  console.log('i heard the click on next');
-  render();
-});
-
-
-
-
-
+function nextQManager() {
+  $("main").on("click", "#nextQ", function(event) {
+    event.preventDefault();
+    questionnaire.currentQuestion++;
+    console.log("i heard the click on next");
+    render();
+  });
 }
 
-
-
-
-
-
-
-
-function handleQuiz(){
+function handleQuiz() {
   render();
   clickonStartManager();
   nextQManager();
   submitManager();
   determineScore();
-  
-
 }
 
 $(handleQuiz);
