@@ -147,6 +147,18 @@ function generateRestartButton() {
   `<button type="button">Restart Quiz</button>`;
 }
 
+
+function generateResultsScreen() {
+  return `
+    <div class="results">
+      <form id="js-restart-quiz">
+        <fieldset>
+          <div class="row">
+            <div class="col-12">
+              <legend>Your Score is: ${questionnaire.score}/${questionnaire.questions.length}</legend>
+            </div>
+          </div>`
+}
 // These functions return HTML templates
 
 /********** RENDER FUNCTION(S) **********/
@@ -169,7 +181,14 @@ function render() {
   } else {
     //   let code;
     //   code={generateHighScore(); generateRestartButton()};
-    $("main").html(code);
+    
+    $('main').html(generateResultsScreen());
+
+
+
+
+
+    
   }
 }
 
