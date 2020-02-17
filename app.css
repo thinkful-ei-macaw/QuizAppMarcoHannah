@@ -6,3 +6,19 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+body {
+
+  background-color: bisque;
+}
+
+h1 {
+
+  text-align: center;
+}
+
+
+.submit-answer{
+  border: black;
+  border-color: black;
+}
