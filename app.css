@@ -10,15 +10,25 @@
 body {
   background-color: #413D3D;
 }
+h1{
+  color: whitesmoke;
+  background-color: mediumpurple;
+  font-family: 'Poiret One', cursive;
+  font-weight: normal;
+  font-size: 60px;
+  text-align: center;
+  padding: 2px, 0px;
+}
 .question{
-  width: 600px;
-  height: 500px;
+  width: 100px;
+  height: 10px;
   margin: 0 auto;
   background-color: whitesmoke;
   padding: 10px 50px 50px 50px;
   border: 2px solid #cbcbcb;
   list-style-type: none;
   font-family: 'Comfortaa', cursive;
+  
 }
 
 
