@@ -121,7 +121,7 @@ function printQuiz() {
     </div>
     <div class="options">
       <div class="answers">
-       ${printAnswers()}here
+       ${printAnswers()}
       </div>
       <div class="submit-answer" >
           <button type="button" id = "submitAtoQ">Submit Your Answer</button>

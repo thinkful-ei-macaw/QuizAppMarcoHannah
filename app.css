@@ -18,7 +18,15 @@ h1 {
 }
 
 
-.submit-answer{
-  border: black;
-  border-color: black;
+form{
+  font-size: 30px;
+ text-align: left;
+ padding-left: 455px;
+}
+
+.question{
+  font-size: 30px;
+  
+ 
+
 }
