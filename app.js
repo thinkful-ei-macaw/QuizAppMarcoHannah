@@ -123,17 +123,19 @@ function printQuiz() {
       <div class="answers">
        ${printAnswers()}
       </div>
-      <div class="submit-answer" >
-          <button type="button" id = "submitAtoQ">Submit Your Answer</button>
-      </div>
-      <div class="next-button">
-          <button type="button" id = "nextQ">Next Question</button>
-      </div> 
-      
-      <div class="submit-button">
-          <button type="submit" id = "submitB">Restart</div>
-      </div> 
-      <div id="message"></<div>
+      <div class ="container">
+              <div class="submit-answer" >
+                  <button type="button" id = "submitAtoQ">Submit Your Answer</button>
+              </div>
+              <div class="next-button">
+                  <button type="button" id = "nextQ">Next Question</button>
+              </div> 
+              <div class="submit-button">
+                  <button type="submit" id = "submitB">Play Again</div>
+              
+              <div id="message">
+              </<div>
+    </div>
     </div>
 </form >`;
 }
@@ -164,7 +166,7 @@ function generateResultsScreen() {
       <form id="js-restart-quiz">
         <fieldset>
           <div class="row">
-            <div class="col-12">
+            <div class="answersScreen">
               <legend>Your Score is: ${questionnaire.score}/${questionnaire.questions.length}</legend>
             </div>
             <button type="submit" id = "submitB">Restart</div>
@@ -182,14 +184,16 @@ function render() {
   if (questionnaire.quizStarted === false) {
     $('main').html(generateStartButton());
    // $("header").css("margin-top": 50px;");
+   
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
     questionnaire.currentQuestion < questionnaire.questions.length
   ) {
+    $("header").css({ "margin-top": "50px" });
     
-    html = printQuestion();
-    html += printQuiz();
+    html = printQuiz();
+    html += printQuestion();
     $('main').html(html);
   } else {
     
@@ -201,7 +205,7 @@ function render() {
 
 
     
-    $('main').html(code);
+    //$('main').html(code);
   }
 }
 

@@ -1,3 +1,5 @@
+
+
 /* Your styles should be mobile-first and responsive */
 
 /** 
@@ -15,31 +17,37 @@ body {
 }
 
 .question{
-  display: inline-flexbox;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   margin: 0 auto;
   background-color: #3F7779;
-  
+  font-size: 20px;
   border: 2px solid #284B4C;
   list-style-type: none;
   
 }
 
 header{
-  margin-top: 50px;
+  margin-top: 200px;
 font-size: x-large;
   text-align: center;
   color: #C1DDDE;
 }
 
 #message{
-
+padding-left: 450px; 
   font-size: xx-large;
-  text-align: right;
+  
 }
+
 .results{
   text-align: center;
   inset-block-start: right;
 }
+
+
+
 
 
 .start-screen {
@@ -53,10 +61,22 @@ font-size: x-large;
    padding: 15px;
    border: none;
  }
-.multiple-choice{
-  padding-left: 100px;
+.answers{
+  
+ padding: 10px;
+ font-size: 30px;
+ margin-left: 45%;
+}
 
-
+.container
+{
+    
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    align-items: center;
+    height: 100%;
+     
 }
 
 legend{
@@ -65,27 +85,28 @@ legend{
   text-align: center;
 }
 
+.submit-answer{
 
+  padding: 5px;
+}
 
+.submit-button{
 
+  padding: 5px;
+}
+
+.next-button{
+  padding: 5px;
+
+}
+
+#score{
+  padding-left: 600px;
+}
 
 
 @media (min-width: 700px) {
-  body {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .main-nav-list-item {
-    float:left;
-    width: 25%;
-  }
-  /*
-  * A grid can do this math for you!
-  
-  .box {
-    width: 47%;
-    float: left;
-  }
+ 
 
   @media (min-width: 1024px) {
     /*
