@@ -8,25 +8,61 @@
 */
 
 body {
-
-  background-color: bisque;
+  background-color: #413D3D;
 }
-
-h1 {
-
-  text-align: center;
-}
-
-
-form{
-  font-size: 30px;
- text-align: left;
- padding-left: 455px;
-}
-
 .question{
-  font-size: 30px;
-  
- 
-
+  width: 600px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 10px 50px 50px 50px;
+  border: 2px solid #cbcbcb;
+  list-style-type: none;
+  font-family: 'Comfortaa', cursive;
 }
+
+
+@media (min-width: 700px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .main-nav-list-item {
+    float:left;
+    width: 25%;
+  }
+  /*
+  * A grid can do this math for you!
+  */
+  .box {
+    width: 47%;
+    float: left;
+  }
+
+  @media (min-width: 1024px) {
+    /*
+    * A grid can do this math for you!
+    */
+    .box {
+      width: 29.33%;
+      float: left;
+      margin-right: 6%;
+    }
+    /*
+     * targeting every third '.box' to add a right margin
+     */
+    .box:nth-child(3n+3) {
+      margin-right: 0;
+    }
+  }
+  
+  /*
+   * clearfix hack 
+   * https://css-tricks.com/snippets/css/clear-fix/
+   */
+  
+  .group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
