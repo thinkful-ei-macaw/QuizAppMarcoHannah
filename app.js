@@ -150,7 +150,7 @@ function printQuiz(){
 
 function generateHighScore(){
   return `<div>
-    Total Score = score/questionnaire.length
+    Total Score = ${score/questionnaire.length}
   </div>`;
 }
   
@@ -200,27 +200,35 @@ console.log('i hear you');
 questionnaire.quizStarted = true;
     render();
 
-})
-};
+});
+}
 
 function multipleChoiceManager(){
-  $('main').on('click', '#multipleChoice', function(event){
-    
+  $('main').on('click', '#nextQ', function(event){
+    event.preventDefault();
+    let currentQ= questionnaire.questions[questionnaire.currentQuestion];
+    let choice= $('input[type="radio"]:checked').val();
+    for (let i=0;i<4;i++){
+      if(choice === currentQ.correctAnswer){
+        questionnaire.score++;
+      }
+      render();
+    }
     console.log('i heard the click on multiple choice');
 
 
 
-  })
-};
+  });
+}
 
 
 function nextQManager(){
 $('main').on('click', '#nextQ', function(event){
+  event.preventDefault();
+questionnaire.currentQuestion++;
   console.log('i heard the click on next');
   render();
-
-
-})
+});
 
 
 
@@ -238,6 +246,7 @@ function handleQuiz(){
   clickonStartManager();
   nextQManager()
   multipleChoiceManager();
+  determineScore();
   
 
 }
