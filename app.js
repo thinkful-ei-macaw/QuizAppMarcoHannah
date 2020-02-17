@@ -102,7 +102,7 @@ function printQuestion(){
     Question Number: ${questionnaire.currentQuestion + 1}/${questionnaire.questions.length}
   </li>
   <li id='score'>
-  Score; ${questionnaire.score}/${questionnaire.questions.length}
+  Score: ${questionnaire.score}/${questionnaire.questions.length}
   </li>
 </ul>`
 }
@@ -132,7 +132,7 @@ function printQuiz(){
   return `
   <form id = "multipleChoice" class="question-form">
     <div class="question">
-      //<legend> ${currentQuestion.question}</legend>
+      <legend> ${currentQuestion.question}</legend>
     </div>
     <div class="options">
       <div class="answers">
@@ -142,7 +142,7 @@ function printQuiz(){
       <button type="button" id = "nextQ">Next</button>
       </div>
       <div class="submit-button">
-      <button type="button" id = "submitB">Submit</div>
+      <button type="submit" id = "submitB">Restart</div>
       </div> 
     </div>
 </form >`
@@ -153,7 +153,7 @@ function generateHighScore(){
     Total Score = score/questionnaire.length
   </div>`;
 }
-
+  
 function generateRestartButton(){
   `<button type="button">Restart Quiz</button>`;
 }
