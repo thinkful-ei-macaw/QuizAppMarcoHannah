@@ -209,21 +209,30 @@ questionnaire.quizStarted = true;
 });
 }
 
-function multipleChoiceManager(){
-  $("main").on("click", "asubmitAtoQ", function(event){
+function submitManager(){
+  $("main").on("click", ".submit-answer", function(event){
     event.preventDefault();
+    console.log("I dance when I submit");
     const currentQ = questionnaire.questions[questionnaire.currentQuestion];
+    console.log(currentQ);
     let choice= $('input[type="radio"]:checked').val();
-    
+    console.log(choice);
+    console.log(currentQ.correctAnswer);
                     if (choice === currentQ.correctAnswer){
+                   questionnaire.score++;
+                   render();
+  clickonStartManager();
+  return `  <p> You're</p>`
 
-                      questionnaire.score++;
-
+                    }else {
+                      `
+                      <div class="right-answer">That is Wrong!</div>
+                      `;
                     }
                     
     
     
-      
+        
       render();
     }
     
@@ -257,7 +266,7 @@ function handleQuiz(){
   render();
   clickonStartManager();
   nextQManager();
-  multipleChoiceManager();
+  submitManager();
   determineScore();
   
 
