@@ -133,6 +133,7 @@ function printQuiz() {
       <div class="submit-button">
           <button type="submit" id = "submitB">Restart</div>
       </div> 
+      <div id="message"></<div>
     </div>
 </form >`;
 }
@@ -227,7 +228,7 @@ function submitManager() {
     console.log(currentQ.correctAnswer);
     if (choice === currentQ.correctAnswer) {
       alert('You are correct!');
-      
+      $("#message").text("That was right!");
       questionnaire.score++;
       render();
       clickonStartManager();
