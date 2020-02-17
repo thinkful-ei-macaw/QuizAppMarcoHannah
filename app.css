@@ -11,6 +11,15 @@ body {
   background-color: gray;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+h1{
+  color: whitesmoke;
+  background-color: mediumpurple;
+  font-family: 'Poiret One', cursive;
+  font-weight: normal;
+  font-size: 60px;
+  text-align: center;
+  padding: 2px, 0px;
+}
 .question{
   display: inline-flexbox;
   margin: 0 auto;
@@ -41,11 +50,11 @@ font-size: x-large;
 }
 .multipleChoice{
 
-
+font-size: ;
   
 }
 
-
+/*
 legend{
   
   font-size: 40px;
@@ -62,7 +71,7 @@ legend{
   }
   /*
   * A grid can do this math for you!
-  */
+  
   .box {
     width: 47%;
     float: left;
@@ -71,7 +80,7 @@ legend{
   @media (min-width: 1024px) {
     /*
     * A grid can do this math for you!
-    */
+    
     .box {
       width: 29.33%;
       float: left;
@@ -79,7 +88,7 @@ legend{
     }
     /*
      * targeting every third '.box' to add a right margin
-     */
+     
     .box:nth-child(3n+3) {
       margin-right: 0;
     }
@@ -88,7 +97,7 @@ legend{
   /*
    * clearfix hack 
    * https://css-tricks.com/snippets/css/clear-fix/
-   */
+   
   
   .group:after {
     content: "";
@@ -96,4 +105,3 @@ legend{
     clear: both;
   } */
 
-} */
