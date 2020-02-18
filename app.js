@@ -165,11 +165,11 @@ function generateResultsScreen() {
     <div class="results">
       <form id="js-restart-quiz">
         <fieldset>
-          <div class="row">
+          <div class="finalScreen">
             <div class="answersScreen">
               <legend>Your Score is: ${questionnaire.score}/${questionnaire.questions.length}</legend>
             </div>
-            <button type="submit" id = "submitB">Restart</div>
+            <button type="submit" id = "submitB">Play Again</div>
           </div>`
 }
 // These functions return HTML templates
@@ -183,8 +183,7 @@ function render() {
 
   if (questionnaire.quizStarted === false) {
     $('main').html(generateStartButton());
-   // $("header").css("margin-top": 50px;");
-   
+     
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
@@ -195,17 +194,15 @@ function render() {
     html = printQuiz();
     html += printQuestion();
     $('main').html(html);
-  } else {
+  } 
+  
+  
+  else  {
     
     
     $('main').html(generateResultsScreen());
     
-
-
-
-
-    
-    //$('main').html(code);
+  
   }
 }
 
