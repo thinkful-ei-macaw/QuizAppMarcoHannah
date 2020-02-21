@@ -125,7 +125,7 @@ function printQuiz() {
       </div>
       <div class ="container">
               <div class="submit-answer" >
-                  <button type="button" id = "submitAtoQ">Submit Your Answer</button>
+                  <button type="submit" value="submit" onClick = "validate()" id = "submitAtoQ">Submit Your Answer</button>
               </div>
               <div class="next-button">
                   <button type="button" id = "nextQ">Next Question</button>
@@ -223,6 +223,7 @@ function clickonStartManager() {
   });
 }
 
+
 function submitManager() {
   $('main').on('click', '.submit-answer', function(event) {
     event.preventDefault();
@@ -232,6 +233,7 @@ function submitManager() {
     let choice = $('input[type="radio"]:checked').val();
     console.log(choice);
     console.log(currentQ.correctAnswer);
+
     if (choice === currentQ.correctAnswer) {
       
       $("#message").text("That was right!");
@@ -250,14 +252,22 @@ function submitManager() {
   });
 }
 
-function nextQManager() {
-  $('main').on('click', '#nextQ', function(event) {
+function nextQManager(){
+  $('main').on('click','#nextQ',function(event){
     event.preventDefault();
-    questionnaire.currentQuestion++;
-    console.log('i heard the click on next');
-    render();
+    let choice = $('input[type="radio"]:checked').val();
+    console.log(choice);
+    if (choice){
+      questionnaire.currentQuestion++;
+    }
+    else {
+      alert('Please select an answer.')
+      return false;
+    }
   });
+  render();
 }
+
 
 function handleQuiz() {
   render();
