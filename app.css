@@ -9,6 +9,7 @@ body {
   background-color: #58554a;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #C1DDDE;
+  width: 100%;
 }
 
 .question{
@@ -20,7 +21,11 @@ body {
   font-size: 20px;
   border: 2px solid #284B4C;
   list-style-type: none;
+<<<<<<< HEAD
+  width: 100%;
+=======
   text-align: center;
+>>>>>>> 8864a81c2139481c095083ff3baa8c24c99d0198
   
 }
 
@@ -29,12 +34,22 @@ header{
 font-size: large;
   text-align: center;
   color: #C1DDDE;
+  width: 100%;
 }
 
 #message{
+<<<<<<< HEAD
+  position: relative;
+  top: 250px;
+  right: 300px;
+  font-size: xx-large;
+  
+  
+=======
   padding: 10px;
   font-size: large;
   text-align: center;
+>>>>>>> 8864a81c2139481c095083ff3baa8c24c99d0198
 }
 
 .results{
@@ -103,7 +118,13 @@ legend{
 
 @media (min-width: 768px) {
  
+}
 
+<<<<<<< HEAD
+@media (min-width: 1024px) {
+    /*
+    * A grid can do this math for you!
+=======
   @media (min-width: 900px) {
     body {
 
@@ -111,6 +132,7 @@ legend{
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       color: #C1DDDE;
     }
+>>>>>>> 8864a81c2139481c095083ff3baa8c24c99d0198
     
     .question{
       display: flex;
