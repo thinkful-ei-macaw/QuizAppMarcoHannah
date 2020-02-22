@@ -211,7 +211,6 @@ function clickonStartManager() {
   });
 }
 
-
 function submitManager() {
   $('main').on('click', '.submit-answer', function(event) {
     event.preventDefault();
@@ -241,22 +240,14 @@ function submitManager() {
   });
 }
 
-function nextQManager(){
-  $('main').on('click','#nextQ',function(event){
+function nextQManager() {
+  $('main').on('click', '#nextQ', function(event) {
     event.preventDefault();
-    let choice = $('input[type="radio"]:checked').val();
-    console.log(choice);
-    if (choice){
-      questionnaire.currentQuestion++;
-    }
-    else {
-      alert('Please select an answer.')
-      return false;
-    }
+    questionnaire.currentQuestion++;
+    console.log('i heard the click on next');
+    render();
   });
-  render();
 }
-
 
 function handleQuiz() {
   render();
