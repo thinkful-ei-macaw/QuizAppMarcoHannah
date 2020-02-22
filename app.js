@@ -114,7 +114,7 @@ function printAnswers() {
 
 function printQuiz() {
   let currentQuestion = questionnaire.questions[questionnaire.currentQuestion];
-  return `
+  return  `
   <form id = "multipleChoice" class="question-form">
     <div class="question">
       <legend> ${currentQuestion.question}</legend>
@@ -125,7 +125,7 @@ function printQuiz() {
       </div>
       <div class ="container">
               <div class="submit-answer" >
-                  <button type="button" id = "submitAtoQ">Submit Your Answer</button>
+                  <button type="submit" value="submit" onClick = "validate()" id = "submitAtoQ">Submit Your Answer</button>
               </div>
               <div class="next-button">
                   <button type="button" id = "nextQ">Next Question</button>
@@ -150,15 +150,6 @@ function generateRestartButton() {
   `<button type="button">Restart Quiz</button>`;
 }
 
-function correctAnswer(){
-  return
-  `
-    </div>
-    <p class="colorgreen">You are CORRECT!!</p> 
-  </div>
-`;
-
-}
 
 function generateResultsScreen() {
   return `
@@ -187,36 +178,24 @@ function render() {
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
-    questionnaire.currentQuestion < questionnaire.questions.length-1
-  ) {
-    $("header").css({ "margin-top": "50px" });
-    
-    html = printQuiz();
-    html += printQuestion();
-    $('main').html(html);
-    $('.submit-button').css({'display':'none'});
-  } 
+    questionnaire.currentQuestion < questionnaire.questions.length-1) {
+
+              $("header").css({ "margin-top": "50px" });
+              
+              html = printQuiz();
+              html += printQuestion();
+              $('main').html(html);
+              $('.submit-button').css({'display':'none'});
+              $('.next-button').css({'display':'none'});
+            } 
   
-  else if (
-    questionnaire.currentQuestion >= 0 &&
-    questionnaire.currentQuestion === questionnaire.questions.length) {
-
-      
-    
-      html = printQuiz();
-      html += printQuestion();
-      $('main').html(html);
-    }
-
-
   
   else  {
     
-    
-    $('main').html(generateResultsScreen());
-    
-  
-  }
+        $('main').html(generateResultsScreen());
+      
+        }
+
 }
 
 $(render());
@@ -227,7 +206,6 @@ $(render());
 
 function clickonStartManager() {
   $('main').on('click', '#start', function(event) {
-    console.log('i hear you');
     questionnaire.quizStarted = true;
     render();
   });
@@ -243,6 +221,7 @@ function submitManager() {
     console.log(choice);
     
     console.log(currentQ.correctAnswer);
+
     if (choice === currentQ.correctAnswer) {
       
       $("#message").text("That was right!");
@@ -256,7 +235,7 @@ function submitManager() {
       $("#message").text("That was incorrect. Try again!!");
     }      
                      
-
+    $('.next-button').css({'display':'inline'});
   
   });
 }
