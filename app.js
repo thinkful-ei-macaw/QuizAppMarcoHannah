@@ -37,6 +37,11 @@ const questionnaire = {
       question: 'What desert is standard at birthday parties?',
       answers: ['cake', 'hot dogs', 'pizza', 'lollipops'],
       correctAnswer: 'cake'
+    },
+    {
+      question: 'How do we call Mars?',
+      answers: ['The geen planet', 'The red planet', 'The cheese planet', 'The Gas Giant'],
+      correctAnswer: 'The red planet'
     }
   ],
   quizStarted: false,
@@ -178,7 +183,7 @@ function render() {
     return;
   } else if (
     questionnaire.currentQuestion >= 0 &&
-    questionnaire.currentQuestion < questionnaire.questions.length-1) {
+    questionnaire.currentQuestion < questionnaire.questions.length) {
 
               $("header").css({ "margin-top": "50px" });
               

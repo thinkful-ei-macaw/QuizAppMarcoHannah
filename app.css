@@ -54,12 +54,17 @@ font-size: large;
    border-radius: 30%;
    padding: 15px;
    border: none;
+   cursor: pointer;
+   
  }
+
+ 
 .answers{
   
  padding: 10px;
  font-size: 15px;
  margin-left: 45%;
+ cursor: pointer;
 }
 
 .container
