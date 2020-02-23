@@ -40,7 +40,7 @@ const questionnaire = {
     },
     {
       question: 'How do we call Mars?',
-      answers: ['The geen planet', 'The red planet', 'The cheese planet', 'The Gas Giantgit '],
+      answers: ['The geen planet', 'The red planet', 'The cheese planet', 'The Gas Giant'],
       correctAnswer: 'The red planet'
     }
   ],
