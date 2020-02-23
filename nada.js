@@ -204,14 +204,6 @@ $(render());
 
 // These functions handle events (submit, click, etc)
 
-
-
-
-
-
-
-
-
 function clickonStartManager() {
   $('main').on('click', '#start', function(event) {
     questionnaire.quizStarted = true;
@@ -219,33 +211,15 @@ function clickonStartManager() {
   });
 }
 
-
-
-
-
-
 function submitManager() {
   $('main').on('click', '.submit-answer', function(event) {
     event.preventDefault();
-    let radios = document.getElementsByName("options");
-    let formValid = false;
-    var i = 0;
-    while (!formValid && i < radios.length) {
-        if (radios[i].checked) formValid = true;
-        i++;        
-    }
-
-    if (!formValid) {alert("Must check some option!")
-    return formValid;
-  }
-
-    console.log(radios);
     console.log('I dance when I submit');
     const currentQ = questionnaire.questions[questionnaire.currentQuestion];
     console.log(currentQ);
     let choice = $('input[type="radio"]:checked').val();
     console.log(choice);
-    $('#submitAtoQ').css({'display':'none'});
+    
     console.log(currentQ.correctAnswer);
 
     if (choice === currentQ.correctAnswer) {
@@ -275,14 +249,9 @@ function nextQManager() {
   });
 }
 
-
-
-
-
 function handleQuiz() {
   render();
   clickonStartManager();
- 
   nextQManager();
   submitManager();
   determineScore();
