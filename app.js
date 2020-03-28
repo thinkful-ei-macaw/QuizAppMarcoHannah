@@ -9,39 +9,35 @@ const questionnaire = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color are roses?',
-      answers: ['red', 'orange', 'pink', 'green'],
-      correctAnswer: 'red'
+      question: 'Best way to prevent coronavirus?',
+      answers: ['Stay home', 'Go out with friends', 'Visit with Family', 'Eat garlic!'],
+      correctAnswer: 'Stay home'
     },
     {
-      question: 'What color is the sky?',
-      answers: ['green', 'black', 'blue', 'pink'],
-      correctAnswer: 'blue'
+      question: 'What does social distancing mean?',
+      answers: ['To not congregate in large numbers', 'To not talk to friends', 'To stop peting your dog', 'Not calling family'],
+      correctAnswer: 'To not congregate in large numbers'
     },
     {
-      question: 'What is the best thing in the world?',
+      question: 'What is the main symptom of Coronavirus?',
       answers: [
-        'puppies crying',
-        'dropping your ice cream',
-        'coding!',
-        'someone eating your leftovers'
+        'Feeling great',
+        'Swollen feet',
+        'Having a fever!',
+        'Being thirsty'
       ],
-      correctAnswer: 'coding!'
+      correctAnswer: 'Having a fever!'
+    },
+
+    {
+      question: 'Who have the highest risk of infection',
+      answers: ['Asians', 'Left handed people', 'Teenagers', 'People over 70'],
+      correctAnswer: 'People over 70'
     },
     {
-      question: 'What number comes after 9?',
-      answers: ['3', '10', '8', '11'],
-      correctAnswer: '10'
-    },
-    {
-      question: 'What desert is standard at birthday parties?',
-      answers: ['cake', 'hot dogs', 'pizza', 'lollipops'],
-      correctAnswer: 'cake'
-    },
-    {
-      question: 'How do we call Mars?',
-      answers: ['The geen planet', 'The red planet', 'The cheese planet', 'The Gas Giant'],
-      correctAnswer: 'The red planet'
+      question: 'What to do if you have symptoms',
+      answers: ['Go to the emergency room', 'Call your doctor after 4 days', 'Nothing', 'Call 911'],
+      correctAnswer: 'Call your doctor after 4 days'
     }
   ],
   quizStarted: false,
@@ -263,7 +259,7 @@ function submitManager() {
     } 
     else {
       
-      $("#message").text("That was incorrect. Try again!!");
+      $("#message").text("That's not correct!");
     }      
                      
     $('.next-button').css({'display':'inline'});
